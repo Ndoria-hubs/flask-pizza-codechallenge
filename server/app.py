@@ -6,7 +6,6 @@ from flask import Flask, request, make_response,jsonify
 from flask_restful import Api, Resource
 import os
 
-
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 DATABASE = os.environ.get(
     "DB_URI", f"sqlite:///{os.path.join(BASE_DIR, 'app.db')}")
@@ -108,7 +107,7 @@ def add_restaurant_pizzas():
     
     except Exception as e:
         db.session.rollback()  # Rollback session on error
-        return {"error": str(e)}, 400  # Return error message and status code
+        return {"error": str(e)}, 400  
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
